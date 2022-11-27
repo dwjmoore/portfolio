@@ -7,8 +7,15 @@ import About from "./components/pages/About";
 import Contact from "./components/pages/Contact";
 import PortfolioDetail from "./components/portfolio/PortfolioDetail";
 import NoMatch from "./components/pages/NoMatch";
+import Icons from "./components/helpers/Icons";
 
 export default class App extends Component {
+    constructor() {
+        super()
+
+        Icons();
+    }
+
     render() {
         return (
             <div className="container">
