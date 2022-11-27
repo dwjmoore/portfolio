@@ -1,22 +1,32 @@
-import { Route, Routes } from "react-router-dom";
+import React, { Component } from "react";
+import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import moment from "moment";
-import Navbar from "./components/navigation/Navbar";
+
+import NavigationContainer from "./components/navigation/NavigationContainer";
 import Home from "./components/pages/Home";
 import About from "./components/pages/About";
 import Contact from "./components/pages/Contact";
+import PortfolioDetail from "./components/portfolio/PortfolioDetail";
 
-export default function App() {
-    return (
-        <div className="app">
-            <h1>David W. J. Moore Portfolio</h1>
-            <div>{moment().format("MMMM Do YYYY, h:mm:ss a")}</div>
-            <Routes>
-                <Route path="/" element={<Navbar />} >
-                    <Route index element={<Home />} />
-                    <Route path="about" element={<About />} />
-                    <Route path="contact" element={<Contact />} />
-                </Route>
-            </Routes>            
-        </div>
-    );
+export default class App extends Component {
+    render() {
+        return (
+            <div className="app">
+                <Router>
+                    <div>
+                        <h1>David W. J. Moore Portfolio</h1>
+                        <div>{moment().format("MMMM Do YYYY, h:mm:ss a")}</div>
+                        <NavigationContainer />
+
+                        <Switch>
+                            <Route exact path="/" component={Home} />
+                            <Route path="/about-me" component={About} />
+                            <Route path="/contact" component={Contact} />
+                            <Route path="/portfolio/:slug" component={PortfolioDetail} />
+                        </Switch>
+                    </div>
+                </Router>
+            </div>
+        );
+    }
 }

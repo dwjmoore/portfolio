@@ -1,47 +1,66 @@
-import { useState } from "react";
+import React, { Component } from "react";
+
 import PortfolioItem from "./PortfolioItem";
 
-export default function PortfolioContainer() {
-    const [pageTitle, setPageTitle] = useState("Welcome to my portfolio");
-    const [data, setData] = useState([
-        { title: "Quip", category: "eCommerce" },
-        { title: "Eventbrite", category: "Scheduling" },
-        { title: "Ministry Safe", category: "Enterprise" },
-        { title: "SwingAway", category: "eCommerce" }
-    ]);
-    const [isLoading, setIsLoading] = useState(false);
+export default class PortfolioContainer extends Component {
+    constructor() {
+        super();
 
-    const handleFilter = (filter) => {
-        setData(data.filter(item => {
-            return item.category === filter;
-        }))
+        this.state = {
+            pageTitle: "Welcome to my portfolio",
+            isLoading: false,
+            data: [
+                { title: "Quip", category: "eCommerce", slug: "quip" },
+                { title: "Eventbrite", category: "Scheduling", slug: "eventbrite" },
+                {
+                    title: "Ministry Safe",
+                    category: "Enterprise",
+                    slug: "ministry-safe"
+                },
+                { title: "SwingAway", category: "eCommerce", slug: "swingaway" }
+            ]
+        };
+
+        this.handleFilter = this.handleFilter.bind(this);
     }
 
-    const portfolioItems = () => {
-        return data.map(item => {
-            return <PortfolioItem title={item.title} url={"google.com"} />
+    handleFilter(filter) {
+        this.setState({
+            data: this.state.data.filter(item => {
+                return item.category === filter;
+            })
         });
     }
 
-    if (isLoading) {
-        return <div>Loading...</div>;
+    portfolioItems() {
+        return this.state.data.map(item => {
+            return (
+                <PortfolioItem title={item.title} url={"google.com"} slug={item.slug} />
+            );
+        });
     }
 
-    return (
-        <div>
-            <h2>{pageTitle}</h2>
+    render() {
+        if (this.state.isLoading) {
+            return <div>Loading...</div>;
+        }
 
-            <button onClick={() => handleFilter("eCommerce")}>
-                eCommerce
-            </button>
-            <button onClick={() => handleFilter("Scheduling")}>
-                Scheduling
-            </button>
-            <button onClick={() => handleFilter("Enterprise")}>
-                Enterprise
-            </button>
+        return (
+            <div>
+                <h2>{this.state.pageTitle}</h2>
 
-            {portfolioItems()}
-        </div>
-    );
+                <button onClick={() => this.handleFilter("eCommerce")}>
+                    eCommerce
+                </button>
+                <button onClick={() => this.handleFilter("Scheduling")}>
+                    Scheduling
+                </button>
+                <button onClick={() => this.handleFilter("Enterprise")}>
+                    Enterprise
+                </button>
+
+                {this.portfolioItems()}
+            </div>
+        );
+    }
 }
