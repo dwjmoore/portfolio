@@ -9,6 +9,7 @@ export default function PortfolioContainer() {
         { title: "Ministry Safe", category: "Enterprise" },
         { title: "SwingAway", category: "eCommerce" }
     ]);
+    const [isLoading, setIsLoading] = useState(false);
 
     const handleFilter = (filter) => {
         setData(data.filter(item => {
@@ -20,6 +21,10 @@ export default function PortfolioContainer() {
         return data.map(item => {
             return <PortfolioItem title={item.title} url={"google.com"} />
         });
+    }
+
+    if (isLoading) {
+        return <div>Loading...</div>;
     }
 
     return (
