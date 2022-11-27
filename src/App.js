@@ -7,6 +7,7 @@ import Home from "./components/pages/Home";
 import About from "./components/pages/About";
 import Contact from "./components/pages/Contact";
 import PortfolioDetail from "./components/portfolio/PortfolioDetail";
+import NoMatch from "./components/pages/NoMatch";
 
 export default class App extends Component {
     render() {
@@ -22,7 +23,8 @@ export default class App extends Component {
                             <Route exact path="/" component={Home} />
                             <Route path="/about-me" component={About} />
                             <Route path="/contact" component={Contact} />
-                            <Route path="/portfolio/:slug" component={PortfolioDetail} />
+                            <Route exact path="/portfolio/:slug" component={PortfolioDetail} />
+                            <Route component={NoMatch} />
                         </Switch>
                     </div>
                 </Router>
