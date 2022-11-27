@@ -1,5 +1,10 @@
+import PortfolioContainer from "../portfolio/PortfolioContainer";
+
 export default function Home() {
     return (
-        <div>Home</div>
+        <div>
+            <h2>Home</h2>
+            <PortfolioContainer />
+        </div>
     );
 }
