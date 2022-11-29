@@ -13,10 +13,10 @@ export default function About() {
         />
         <div className="right-column">
           <p>
-            Hi! My name is David Moore. I am a full-stack developer, who graduated from Bottega University's Full-Stack Development Certificate program in December 2022. I am certified in JavaScript, ReactJS, Python 3, UML, HTML5, CSS, Flask, JSON, Git, MongoDB, SQL Databases, SCSS/SASS, Flexbox, CSS Grid.
+            Hi! My name is David Moore. I am a full-stack developer who graduated from Bottega University's Full-Stack Development Certificate program in December 2022. I am certified in JavaScript, ReactJS, Python 3, UML, HTML5, CSS, Flask, JSON, Git, MongoDB, SQL Databases, SCSS/SASS, Flexbox, CSS Grid.
           </p>
           <p>
-            I enjoy languages, so for my final project I created a website that puts some natural method learning materials that are in the public domain into a digital, dynamic format. I'm continuing to work on the project, but I am excited about where it is going.
+            I enjoy languages, so for my final project I created a website that puts some natural method learning materials that are in the public domain into a digital, dynamic format. I'm continuing to work on the project, and I am excited about where it is going.
           </p>
         </div>
       </div>
